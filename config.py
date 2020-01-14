@@ -1,10 +1,14 @@
 import redis
+import logging
 
 
 class Config(object):
     # 工程配置信息
     # SECRET_KEY用来生成加密令牌
     SECRET_KEY = "EjpNVSNQTyGi1VvWECj9TvC/+kq3oujee2kTfQUs8yCM6xX9Yjq52v54g+HVoknA"
+
+    # 默认日志等级
+    LOG_LEVEL = logging.DEBUG
 
     # 数据库的配置信息
     SQLAlCHEMY_DATABASE_URI = "mysql://root:mysql@127.0.0.1:3306/news"
@@ -29,7 +33,7 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     """生产配置环境"""
-    pass
+    LOG_LEVEL = logging.ERROR
 
 
 # 定义配置字典
