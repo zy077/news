@@ -32,7 +32,12 @@ def create_app(config_name):
     # 配置日志
     setup_log(config_name)
 
+    # 创建应用对象
     app = Flask(__name__)
+
+    # 把蓝图注册到应用上
+    from info.modules.index import index_blu
+    app.register_blueprint(index_blu)
 
     # 配置
     app.config.from_object(config[config_name])
